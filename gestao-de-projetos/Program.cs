@@ -16,7 +16,7 @@ namespace gestao_de_projetos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new createEditForm());
         }
     }
 }
