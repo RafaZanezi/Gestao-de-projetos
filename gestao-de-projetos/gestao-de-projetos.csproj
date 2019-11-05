@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
@@ -49,16 +52,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="create-edit-project.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="create-edit-project.Designer.cs">
+      <DependentUpon>create-edit-project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="design.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="design.Designer.cs">
+      <DependentUpon>design.cs</DependentUpon>
+    </Compile>
+    <Compile Include="list-project.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="list-project.Designer.cs">
+      <DependentUpon>list-project.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="create-edit-project.resx">
+      <DependentUpon>create-edit-project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="list-project.resx">
+      <DependentUpon>list-project.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,9 +102,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="assets\baseline_calendar_today_white_18dp.png" />
+    <None Include="assets\outline_menu_white_large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\outline_menu_white_18dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

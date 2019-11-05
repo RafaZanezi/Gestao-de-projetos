@@ -63,9 +63,19 @@ namespace gestao_de_projetos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_calendar_today_white_18dp {
+        internal static System.Drawing.Bitmap outline_menu_white_18dp {
             get {
-                object obj = ResourceManager.GetObject("baseline_calendar_today_white_18dp", resourceCulture);
+                object obj = ResourceManager.GetObject("outline_menu_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_menu_white_large {
+            get {
+                object obj = ResourceManager.GetObject("outline_menu_white_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

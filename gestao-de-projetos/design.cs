@@ -1,40 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-
 // Import the Material Skin
 using MaterialSkin;
 using MaterialSkin.Controls;
 
-
-
 namespace gestao_de_projetos
 {
-    public partial class createEditForm : MaterialForm
+    public partial class design : MaterialForm
     {
-        Boolean isAlteracao = false;
-        public createEditForm()
+        public design()
         {
-            if (isAlteracao)
-            {
-                this.Text = "Editar projeto";
-                // TODO: Setar valores que vierem do banco nos campos
-            } else
-            {
-                this.Text = "Novo projeto";
-            }
-            
             InitializeComponent();
+        }
 
+        public design(IContainer container)
+        {
+            container.Add(this);
+
+            InitializeComponent();
+        }
+
+        public static void configMaterialSkin(MaterialForm instance)
+        {
             // Create a material theme manager and add the form to manage (this)
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.AddFormToManage(instance);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 
             // Configure color schema
@@ -43,13 +38,6 @@ namespace gestao_de_projetos
                 Primary.Teal700, Accent.Red700,
                 TextShade.WHITE
             );
-
         }
-
-        private void statusLinkRepositorio(object sender, EventArgs e)
-        {
-            linkRepositorio.Visible = !linkRepositorio.Visible;
-        }
-
     }
 }
