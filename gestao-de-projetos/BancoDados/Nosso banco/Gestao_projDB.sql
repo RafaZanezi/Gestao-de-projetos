@@ -7,7 +7,6 @@ Senha varchar(15) NOT NULL
 CREATE TABLE Projeto (
 ID_projeto SERIAL PRIMARY KEY,
 Nome varchar(60) NOT NULL,
-Senha varchar(15) NOT NULL,
 DS_Link_Repositorio varchar(90) NOT NULL,
 DT_fim DATE NOT NULL,
 DT_Inicio DATE NOT NULL,
