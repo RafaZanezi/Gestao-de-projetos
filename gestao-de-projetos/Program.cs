@@ -17,6 +17,8 @@ namespace gestao_de_projetos
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new login());
+
+            string stringDeConexao = @"DataSource=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\SQLDATABASES\Northwind\NORTHWND.MDF;IntegratedSecurity=True;Connect Timeout=30";
         }
     }
 }
