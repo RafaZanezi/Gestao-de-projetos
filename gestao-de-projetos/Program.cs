@@ -18,9 +18,7 @@ namespace gestao_de_projetos
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new createEditForm());
 
-            string stringDeConexao = @"Data
-Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\SQLDATABASES\Northwind\NORTHWND.MDF;Integrated
-Security=True;Connect Timeout=30";
+            
 
 
 
