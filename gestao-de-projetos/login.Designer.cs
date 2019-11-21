@@ -78,7 +78,7 @@
             this.lineSenha.Size = new System.Drawing.Size(193, 23);
             this.lineSenha.TabIndex = 18;
             this.lineSenha.TabStop = false;
-            this.lineSenha.UseSystemPasswordChar = false;
+            this.lineSenha.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -154,6 +154,7 @@
             this.Controls.Add(this.lineSenha);
             this.Controls.Add(this.lineUsuario);
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
