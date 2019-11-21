@@ -54,5 +54,10 @@ namespace gestao_de_projetos
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+
+        private void createEditForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace Conexao {
                        
 
                     }
-            }
+
+                    Conexao.Close();
+                }
         }
     }
