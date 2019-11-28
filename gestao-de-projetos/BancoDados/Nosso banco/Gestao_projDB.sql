@@ -37,3 +37,7 @@ CONSTRAINT UsuUPID FOREIGN KEY (ID_usuario) REFERENCES Usuario (ID_usuario),
 CONSTRAINT ProjUPID FOREIGN KEY (ID_projeto) REFERENCES Projeto (ID_projeto)
 
 )
+
+-- Altera tamanho da coluna de descrição
+ALTER TABLE public.projeto
+    ADD COLUMN descricao character varying(250) COLLATE pg_catalog."default";

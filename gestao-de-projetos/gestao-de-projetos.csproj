@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
     <Compile Include="create-edit-project.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,7 @@
       <DependentUpon>list-project.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="create-edit-project.resx">
       <DependentUpon>create-edit-project.cs</DependentUpon>

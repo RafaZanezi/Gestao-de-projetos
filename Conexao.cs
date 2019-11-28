@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 using Npgsql;
 
-namespace Conexao {
-
-    static class Conexao
+namespace Conexao
+{
+    class Conexao
     {
+        private string connString = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
+
         static void Main()
         {
-            string connString = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
             {
                 using (NpgsqlConnection Conexao = new NpgsqlConnection(connString))
                 {
@@ -20,11 +21,14 @@ namespace Conexao {
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand())
                     {
-                       
+
 
                     }
 
                     Conexao.Close();
                 }
+            }
         }
+
     }
+}
