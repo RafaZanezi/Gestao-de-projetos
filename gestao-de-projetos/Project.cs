@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,12 @@ namespace gestao_de_projetos
         private String Nome;
         private String Descricao;
         private String NomeOrientador;
-        private String TpVisibilidade; // 'PUB' e 'PVD'
+        private String TpVisibilidade; // 'PB' e 'PV'
         private String DtInicio;
         private String DtFim;
         private String LinkRepositorio;
+
+        public Project() { }
 
         // Insert
         public Project(
@@ -37,7 +40,7 @@ namespace gestao_de_projetos
             this.LinkRepositorio = LinkRepositorio;
         }
 
-        public void Insert(Project NewProject)
+        public static void Insert(Project NewProject)
         {
             List<QueryParameters> List = new List<QueryParameters>();
 
@@ -47,14 +50,16 @@ namespace gestao_de_projetos
                     "dt_fim, " +
                     "dt_inicio, " +
                     "tp_visibilidade, " +
-                    "descricao" +
+                    "descricao, " +
+                    "nome_orientador" +
                 ") VALUES (" +
                     "@nome, " +
                     "@ds_link_repositorio, " +
                     "to_date(@dt_fim, 'yyy-MM-dd'), " +
                     "to_date(@dt_inicio, 'yyy-MM-dd'), " +
                     "@tp_visibilidade, " +
-                    "@descricao" +
+                    "@descricao, " +
+                    "@nome_orientador" +
                 ")";
 
             List.Add(Connection.addQueryListItem("nome", NewProject.GetNome()));
@@ -63,8 +68,9 @@ namespace gestao_de_projetos
             List.Add(Connection.addQueryListItem("dt_inicio", "" + NewProject.GetDtInicio()));
             List.Add(Connection.addQueryListItem("tp_visibilidade", NewProject.GetTpVisibilidade()));
             List.Add(Connection.addQueryListItem("descricao", NewProject.GetDescricao()));
+            List.Add(Connection.addQueryListItem("nome_orientador", NewProject.GetNomeOrientador()));
 
-            try{ Connection.InsertData(Query, List); } catch(NpgsqlException e ) { throw e; }
+            try { Connection.InsertUpdateData(Query, List); } catch(NpgsqlException e ) { throw e; }
         }
 
         // Update
@@ -72,6 +78,7 @@ namespace gestao_de_projetos
             int Id,
             String Nome,
             String NomeOrientador,
+            String Descricao,
             String TpVisibilidade,
             String DtInicio,
             String DtFim,
@@ -79,6 +86,7 @@ namespace gestao_de_projetos
         {
             this.Id = Id;
             this.Nome = Nome;
+            this.Descricao = Descricao;
             this.NomeOrientador = NomeOrientador;
             this.TpVisibilidade = TpVisibilidade;
             this.DtInicio = DtInicio;
@@ -86,9 +94,30 @@ namespace gestao_de_projetos
             this.LinkRepositorio = LinkRepositorio;
         }
 
-        public void Update()
+        public static void Update(Project MyProject)
         {
+            List<QueryParameters> List = new List<QueryParameters>();
 
+            String Query = "UPDATE Projeto SET " +
+                                "nome = @nome, " +
+                                "ds_link_repositorio = @ds_link_repositorio, " +
+                                "dt_fim = to_date(@dt_fim, 'yyy-MM-dd'), " +
+                                "dt_inicio = to_date(@dt_inicio, 'yyy-MM-dd'), " +
+                                "tp_visibilidade = @tp_visibilidade, " +
+                                "descricao = @descricao, " +
+                                "nome_orientador = @nome_orientador " +
+                            "WHERE id_projeto = cast(@id as integer) ";
+
+            List.Add(Connection.addQueryListItem("nome", MyProject.GetNome()));
+            List.Add(Connection.addQueryListItem("ds_link_repositorio", MyProject.GetLinkRepositorio()));
+            List.Add(Connection.addQueryListItem("dt_fim", "" + MyProject.GetDtFim()));
+            List.Add(Connection.addQueryListItem("dt_inicio", "" + MyProject.GetDtInicio()));
+            List.Add(Connection.addQueryListItem("tp_visibilidade", MyProject.GetTpVisibilidade()));
+            List.Add(Connection.addQueryListItem("descricao", MyProject.GetDescricao()));
+            List.Add(Connection.addQueryListItem("nome_orientador", MyProject.GetNomeOrientador()));
+            List.Add(Connection.addQueryListItem("id", MyProject.GetId().ToString()));
+
+            try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }
         }
 
         // List
@@ -107,6 +136,23 @@ namespace gestao_de_projetos
         public List<Project> List()
         {
             return new List<Project>();
+        }
+
+        public static Project GetByPk(int id)
+        {
+            String Query = "SELECT id_projeto," +
+                                 " nome," +
+                                 " nome_orientador," +
+                                 " descricao, " +
+                                 " tp_visibilidade," +
+                                 " dt_inicio," +
+                                 " dt_fim," +
+                                 " ds_link_repositorio " +
+                           "FROM Projeto WHERE id_projeto = @id";
+
+            try { 
+                return Connection.GetByPk(Query, id); 
+            } catch (NpgsqlException e) { throw e; }
         }
 
         public static string configVisibilidade(Boolean isPublic)

@@ -41,3 +41,8 @@ CONSTRAINT ProjUPID FOREIGN KEY (ID_projeto) REFERENCES Projeto (ID_projeto)
 -- Altera tamanho da coluna de descrição
 ALTER TABLE public.projeto
     ADD COLUMN descricao character varying(250) COLLATE pg_catalog."default";
+
+-- Adiciona coluna do nome_orientador
+ALTER TABLE public.projeto
+    ADD COLUMN nome_orientador character varying(60);
+	

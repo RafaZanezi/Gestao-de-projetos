@@ -19,19 +19,18 @@ namespace gestao_de_projetos
 {
     public partial class createEditForm : MaterialForm
     {
-        Boolean isAlteracao = false;
+        int id = 0; // id do projeto para casos de edição
+        
         public createEditForm()
         {
-            //if (isAlteracao)
-            //{
-             //   lblContexto.Text = "Editar projeto";
-                // TODO: Setar valores que vierem do banco nos campos
-            //}
-            //else
-            //{
-            //    lblContexto.Text = "Novo projeto";
-            //}
+            InitializeComponent();
+            design.configMaterialSkin(this);
+        }
 
+        // sobrecarca para update
+        public createEditForm(int id)
+        {
+            this.id = id;
             InitializeComponent();
             design.configMaterialSkin(this);
         }
@@ -48,6 +47,10 @@ namespace gestao_de_projetos
 
         private void createEditForm_Load(object sender, EventArgs e)
         {
+            if(this.id != 0)
+            {
+                this.setFields(Project.GetByPk(this.id));
+            }
         }
 
         private void save(object sender, EventArgs e)
@@ -72,15 +75,30 @@ namespace gestao_de_projetos
                 }
                 else
                 {
-                    Project NewProject = new Project(nomeProjeto.Text,
-                                                     nomeOrientador.Text,
-                                                     descricaoProjeto.Text,
-                                                     tpVisibilidade,
-                                                     resultDtInicio.ToString("yyyy-MM-dd"),
-                                                     resultDtFim.ToString("yyyy-MM-dd"),
-                                                     linkRepositorio.Text);
-                    // NpgsqlException e Exception
-                    NewProject.Insert(NewProject);
+                    string ds_link = "";
+                    if(possuiRepositorio.Checked)
+                    {
+                        ds_link = linkRepositorio.Text;
+                    }
+                    Project MyProject = new Project(nomeProjeto.Text,
+                                                    nomeOrientador.Text,
+                                                    descricaoProjeto.Text,
+                                                    tpVisibilidade,
+                                                    resultDtInicio.ToString("yyyy-MM-dd"),
+                                                    resultDtFim.ToString("yyyy-MM-dd"),
+                                                    ds_link);
+                    
+                    if(this.id == 0)
+                    {
+                        // NpgsqlException e Exception
+                        Project.Insert(MyProject);
+                    } else
+                    {
+                        // NpgsqlException e Exception
+                        MyProject.SetId(this.id);
+                        Project.Update(MyProject);
+                    }
+
                     this.concluir();
                 }
             } catch (FormatException)
@@ -95,6 +113,20 @@ namespace gestao_de_projetos
                 MessageBox.Show(ex.Message, "Ocorreu um erro", MessageBoxButtons.OK);
                 Console.WriteLine(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void setFields(Project prj)
+        {
+            nomeProjeto.Text = prj.GetNome();
+            nomeOrientador.Text = prj.GetNomeOrientador();
+            descricaoProjeto.Text = prj.GetDescricao();
+            projetoPublico.Checked = prj.GetTpVisibilidade() == "PB";
+
+            dtInicioProjeto.Text = DateTime.Parse(prj.GetDtInicio()).ToString("dd-MM-yyyy");
+            dtFimProjeto.Text = DateTime.Parse(prj.GetDtFim()).ToString("dd-MM-yyyy");
+
+            possuiRepositorio.Checked = prj.GetLinkRepositorio() != "";
+            linkRepositorio.Text = prj.GetLinkRepositorio();
         }
 
         private void concluir()

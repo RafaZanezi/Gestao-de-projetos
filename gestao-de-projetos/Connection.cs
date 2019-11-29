@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using Npgsql;
+using System.Data;
 
 namespace gestao_de_projetos
 {
@@ -49,22 +50,14 @@ namespace gestao_de_projetos
             } // fim connection
         }
 
-        public static void InsertData(String Query, List<QueryParameters> QueryParams)
+        public static void InsertUpdateData(String Query, List<QueryParameters> QueryParams)
         {
-            //tenta criar uma conexão com o banco
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
                 try
                 {
-                    //abre a conexão com o banco
                     conn.Open();
 
-                    //Cria um novo adaptador para os dados na tabela
-                    NpgsqlDataAdapter data_adapter = new NpgsqlDataAdapter();
-
-                    //Cria os objetos que representam os comandos de consulta sql !!!
-
-                    //cria um comando de consulta do tipo select
                     NpgsqlCommand cmd_select = new NpgsqlCommand();
                     cmd_select.Connection = conn;
                     cmd_select.CommandText = Query;
@@ -81,11 +74,42 @@ namespace gestao_de_projetos
                         throw new Exception("Não foi possível inserir o registro");
                     }
                 }
-                catch (NpgsqlException e) { throw e; }
-                finally { conn.Close(); }
-
+                catch (NpgsqlException e) { throw e; } finally { conn.Close(); }
             } // fim connection
         }
+
+        public static Project GetByPk(String Query, int id)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                try
+                {
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(Query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("id", id);
+
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader()) //executa o comando que retornará uma tabela
+                        {
+                            reader.Read();
+                            Project prj = new Project();
+                            prj.SetId(reader.GetInt32(0));
+
+                            if (!reader.IsDBNull(1)) { prj.SetNome(reader.GetString(1)); }
+                            if (!reader.IsDBNull(2)) { prj.SetNomeOrientador(reader.GetString(2)); }
+                            if (!reader.IsDBNull(3)) { prj.SetDescricao(reader.GetString(3)); }
+                            if (!reader.IsDBNull(4)) { prj.SetTpVisibilidade(reader.GetString(4)); }
+                            if (!reader.IsDBNull(5)) { prj.SetDtInicio(reader.GetDateTime(5).ToString()); }
+                            if (!reader.IsDBNull(6)) { prj.SetDtFim(reader.GetDateTime(6).ToString()); }
+                            if (!reader.IsDBNull(7)) { prj.SetLinkRepositorio(reader.GetString(7)); }
+
+                            return prj;
+                        }
+                    }
+                } catch (NpgsqlException e) { throw e; } finally { conn.Close(); }
+            }
+        }
+
     }
 
     class QueryParameters
