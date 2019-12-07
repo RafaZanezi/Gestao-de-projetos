@@ -19,7 +19,7 @@ namespace gestao_de_projetos
 {
     public partial class createEditForm : MaterialForm
     {
-        int id = 0; // id do projeto para casos de edição
+        int id = 7; // id do projeto para casos de edição
         
         public createEditForm()
         {
@@ -121,6 +121,7 @@ namespace gestao_de_projetos
             nomeOrientador.Text = prj.GetNomeOrientador();
             descricaoProjeto.Text = prj.GetDescricao();
             projetoPublico.Checked = prj.GetTpVisibilidade() == "PB";
+            projetoPrivado.Checked = prj.GetTpVisibilidade() == "PV";
 
             dtInicioProjeto.Text = DateTime.Parse(prj.GetDtInicio()).ToString("dd-MM-yyyy");
             dtFimProjeto.Text = DateTime.Parse(prj.GetDtFim()).ToString("dd-MM-yyyy");

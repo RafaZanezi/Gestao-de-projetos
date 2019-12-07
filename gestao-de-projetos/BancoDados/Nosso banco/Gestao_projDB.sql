@@ -46,3 +46,21 @@ ALTER TABLE public.projeto
 ALTER TABLE public.projeto
     ADD COLUMN nome_orientador character varying(60);
 	
+	
+-- Remover coluna de tempo estimado
+ALTER TABLE public.tarefa
+    ADD COLUMN cod_tarefa integer NOT NULL DEFAULT nextval('tarefa_cod_tarefa_seq'::regclass);
+	
+-- Altera tipo da coluna de tempo estimado para double
+ALTER TABLE public.tarefa
+    ADD COLUMN tempo_estimado double precision;
+	
+-- Altera tamanho do nome da tarefa
+ALTER TABLE public.tarefa
+    ALTER COLUMN nome_tarefa TYPE character varying (50) COLLATE pg_catalog."default";
+
+-- Adiciona coluna de status da tarefa 
+ALTER TABLE public.tarefa
+    ADD COLUMN status character varying(4);	
+	
+	

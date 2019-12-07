@@ -28,17 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Meus projetos", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Projetos Públicos", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Teste1",
-            "Lorem Ipsum Dolor sit amet dfks;dlfks;l ;slkf;lsdkf"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Teste 2");
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("A fazer", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Feitas", System.Windows.Forms.HorizontalAlignment.Left);
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView = new MaterialSkin.Controls.MaterialListView();
+            this.columnTarefa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnEstimativa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnResponsavel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // materialRaisedButton1
@@ -57,50 +53,49 @@
             this.materialRaisedButton1.Text = "Adicionar";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
             // 
-            // materialListView1
+            // listView
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            listViewGroup1.Header = "Meus projetos";
-            listViewGroup1.Name = "myProjects";
-            listViewGroup2.Header = "Projetos Públicos";
-            listViewGroup2.Name = "publicProjects";
-            this.materialListView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnTarefa,
+            this.columnEstimativa,
+            this.columnResponsavel});
+            this.listView.Depth = 0;
+            this.listView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listView.FullRowSelect = true;
+            listViewGroup1.Header = "A fazer";
+            listViewGroup1.Name = "todoList";
+            listViewGroup2.Header = "Feitas";
+            listViewGroup2.Name = "doneList";
+            this.listView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2});
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.HideSelection = false;
-            listViewItem1.Group = listViewGroup1;
-            listViewItem2.Group = listViewGroup2;
-            listViewItem3.Group = listViewGroup1;
-            this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
-            this.materialListView1.Location = new System.Drawing.Point(24, 79);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(449, 350);
-            this.materialListView1.TabIndex = 2;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(24, 80);
+            this.listView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listView.MouseState = MaterialSkin.MouseState.OUT;
+            this.listView.Name = "listView";
+            this.listView.OwnerDraw = true;
+            this.listView.Size = new System.Drawing.Size(449, 350);
+            this.listView.TabIndex = 2;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // columnTarefa
             // 
-            this.columnHeader1.Text = "Nome";
-            this.columnHeader1.Width = 145;
+            this.columnTarefa.Text = "";
+            this.columnTarefa.Width = 150;
             // 
-            // columnHeader2
+            // columnEstimativa
             // 
-            this.columnHeader2.Text = "Descrição";
-            this.columnHeader2.Width = 190;
+            this.columnEstimativa.Text = "Estimativa";
+            this.columnEstimativa.Width = 71;
+            // 
+            // columnResponsavel
+            // 
+            this.columnResponsavel.Text = "Responsável";
+            this.columnResponsavel.Width = 114;
             // 
             // list_task
             // 
@@ -108,10 +103,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 740);
             this.Controls.Add(this.materialRaisedButton1);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.listView);
             this.Name = "list_task";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefas";
+            this.Load += new System.EventHandler(this.loadItems);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,8 +116,9 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private MaterialSkin.Controls.MaterialListView listView;
+        private System.Windows.Forms.ColumnHeader columnTarefa;
+        private System.Windows.Forms.ColumnHeader columnEstimativa;
+        private System.Windows.Forms.ColumnHeader columnResponsavel;
     }
 }
