@@ -13,17 +13,12 @@ using MaterialSkin.Controls;
 
 namespace gestao_de_projetos
 {
-    public partial class Task_Registration : MaterialForm
+    public partial class task_create_edit : MaterialForm
     {
-        public Task_Registration()
+        public task_create_edit()
         {
             InitializeComponent();
             design.configMaterialSkin(this);
-        }
-
-        private void Task_Registration_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
