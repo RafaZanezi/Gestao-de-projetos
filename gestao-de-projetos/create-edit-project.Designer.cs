@@ -35,10 +35,10 @@
             this.dtInicioProjeto = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dtIniProj = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtFimProjeto = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.dtFimProj = new System.Windows.Forms.Label();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.possuiRepositorio = new MaterialSkin.Controls.MaterialCheckBox();
             this.projetoPublico = new MaterialSkin.Controls.MaterialRadioButton();
@@ -49,7 +49,7 @@
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tstefokfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.saveButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.nomeProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomeProjeto.Hint = "Nome do projeto";
             this.nomeProjeto.Location = new System.Drawing.Point(35, 117);
+            this.nomeProjeto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nomeProjeto.MaxLength = 32767;
             this.nomeProjeto.MouseState = MaterialSkin.MouseState.HOVER;
             this.nomeProjeto.Name = "nomeProjeto";
@@ -81,11 +82,12 @@
             this.descricaoProjeto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.descricaoProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descricaoProjeto.ForeColor = System.Drawing.Color.Black;
-            this.descricaoProjeto.Location = new System.Drawing.Point(38, 249);
+            this.descricaoProjeto.Location = new System.Drawing.Point(37, 249);
             this.descricaoProjeto.Margin = new System.Windows.Forms.Padding(5);
+            this.descricaoProjeto.MaxLength = 250;
             this.descricaoProjeto.Multiline = true;
             this.descricaoProjeto.Name = "descricaoProjeto";
-            this.descricaoProjeto.Size = new System.Drawing.Size(431, 141);
+            this.descricaoProjeto.Size = new System.Drawing.Size(431, 142);
             this.descricaoProjeto.TabIndex = 11;
             // 
             // label1
@@ -106,6 +108,7 @@
             this.dtInicioProjeto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtInicioProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtInicioProjeto.Location = new System.Drawing.Point(31, 523);
+            this.dtInicioProjeto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtInicioProjeto.Mask = "00/00/0000";
             this.dtInicioProjeto.Name = "dtInicioProjeto";
             this.dtInicioProjeto.Size = new System.Drawing.Size(125, 23);
@@ -123,21 +126,21 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(34, 388);
+            this.label3.Location = new System.Drawing.Point(35, 388);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(439, 2);
             this.label3.TabIndex = 25;
             // 
-            // label4
+            // dtIniProj
             // 
-            this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label4.Location = new System.Drawing.Point(31, 497);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 49);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Data de início";
+            this.dtIniProj.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dtIniProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtIniProj.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dtIniProj.Location = new System.Drawing.Point(31, 497);
+            this.dtIniProj.Name = "dtIniProj";
+            this.dtIniProj.Size = new System.Drawing.Size(209, 49);
+            this.dtIniProj.TabIndex = 26;
+            this.dtIniProj.Text = "Data de início";
             // 
             // label5
             // 
@@ -152,23 +155,24 @@
             this.dtFimProjeto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.dtFimProjeto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtFimProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFimProjeto.Location = new System.Drawing.Point(265, 525);
+            this.dtFimProjeto.Location = new System.Drawing.Point(265, 526);
+            this.dtFimProjeto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtFimProjeto.Mask = "00/00/0000";
             this.dtFimProjeto.Name = "dtFimProjeto";
             this.dtFimProjeto.Size = new System.Drawing.Size(125, 23);
             this.dtFimProjeto.TabIndex = 15;
             this.dtFimProjeto.ValidatingType = typeof(System.DateTime);
             // 
-            // label6
+            // dtFimProj
             // 
-            this.label6.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label6.Location = new System.Drawing.Point(265, 497);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(209, 49);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Data (prevista) término";
+            this.dtFimProj.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dtFimProj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFimProj.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dtFimProj.Location = new System.Drawing.Point(265, 497);
+            this.dtFimProj.Name = "dtFimProj";
+            this.dtFimProj.Size = new System.Drawing.Size(209, 49);
+            this.dtFimProj.TabIndex = 29;
+            this.dtFimProj.Text = "Data (prevista) término";
             // 
             // materialLabel1
             // 
@@ -176,7 +180,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(30, 420);
+            this.materialLabel1.Location = new System.Drawing.Point(29, 420);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(127, 24);
@@ -221,7 +225,7 @@
             this.projetoPrivado.AutoSize = true;
             this.projetoPrivado.Depth = 0;
             this.projetoPrivado.Font = new System.Drawing.Font("Roboto", 10F);
-            this.projetoPrivado.Location = new System.Drawing.Point(154, 444);
+            this.projetoPrivado.Location = new System.Drawing.Point(155, 444);
             this.projetoPrivado.Margin = new System.Windows.Forms.Padding(0);
             this.projetoPrivado.MouseLocation = new System.Drawing.Point(-1, -1);
             this.projetoPrivado.MouseState = MaterialSkin.MouseState.HOVER;
@@ -243,6 +247,7 @@
             this.linkRepositorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkRepositorio.Hint = "Link do repositório";
             this.linkRepositorio.Location = new System.Drawing.Point(33, 619);
+            this.linkRepositorio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.linkRepositorio.MaxLength = 32767;
             this.linkRepositorio.MouseState = MaterialSkin.MouseState.HOVER;
             this.linkRepositorio.Name = "linkRepositorio";
@@ -265,7 +270,8 @@
             this.nomeOrientador.Depth = 0;
             this.nomeOrientador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomeOrientador.Hint = "Orientador";
-            this.nomeOrientador.Location = new System.Drawing.Point(34, 168);
+            this.nomeOrientador.Location = new System.Drawing.Point(35, 167);
+            this.nomeOrientador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nomeOrientador.MaxLength = 32767;
             this.nomeOrientador.MouseState = MaterialSkin.MouseState.HOVER;
             this.nomeOrientador.Name = "nomeOrientador";
@@ -320,20 +326,22 @@
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.cancelar);
             // 
-            // materialRaisedButton1
+            // saveButton
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(389, 671);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(86, 36);
-            this.materialRaisedButton1.TabIndex = 37;
-            this.materialRaisedButton1.Text = "Salvar";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.saveButton.AutoSize = true;
+            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.saveButton.Depth = 0;
+            this.saveButton.Icon = null;
+            this.saveButton.Location = new System.Drawing.Point(389, 671);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saveButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Primary = true;
+            this.saveButton.Size = new System.Drawing.Size(86, 36);
+            this.saveButton.TabIndex = 37;
+            this.saveButton.Text = "Salvar";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.save);
             // 
             // createEditForm
             // 
@@ -341,7 +349,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(503, 740);
-            this.Controls.Add(this.materialRaisedButton1);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.nomeOrientador);
             this.Controls.Add(this.linkRepositorio);
@@ -351,18 +359,19 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtFimProjeto);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dtFimProj);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtInicioProjeto);
             this.Controls.Add(this.descricaoProjeto);
             this.Controls.Add(this.nomeProjeto);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtIniProj);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "createEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.createEditForm_Load);
             this.materialContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -378,10 +387,10 @@
         private System.Windows.Forms.MaskedTextBox dtInicioProjeto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label dtIniProj;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox dtFimProjeto;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label dtFimProj;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialCheckBox possuiRepositorio;
         private MaterialSkin.Controls.MaterialRadioButton projetoPublico;
@@ -392,7 +401,7 @@
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tstefokfToolStripMenuItem;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton saveButton;
     }
 }
 

@@ -18,5 +18,7 @@ namespace gestao_de_projetos
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new login());
         }
+
+
     }
 }
