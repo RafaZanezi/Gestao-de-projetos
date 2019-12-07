@@ -104,6 +104,17 @@
     <Compile Include="list-project.Designer.cs">
       <DependentUpon>list-project.cs</DependentUpon>
     </Compile>
+    <Compile Include="list-task.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="list-task.Designer.cs">
+      <DependentUpon>list-task.cs</DependentUpon>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,11 +124,17 @@
     <Compile Include="create-edit-task.Designer.cs">
       <DependentUpon>create-edit-task.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task.cs" />
     <EmbeddedResource Include="create-edit-project.resx">
       <DependentUpon>create-edit-project.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="list-project.resx">
       <DependentUpon>list-project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="list-task.resx">
+      <DependentUpon>list-task.cs</DependentUpon>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

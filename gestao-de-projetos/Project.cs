@@ -151,7 +151,7 @@ namespace gestao_de_projetos
                            "FROM Projeto WHERE id_projeto = @id";
 
             try { 
-                return Connection.GetByPk(Query, id); 
+                return Connection.GetByPk<Project>(Query, id); 
             } catch (NpgsqlException e) { throw e; }
         }
 
