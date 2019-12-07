@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="list-task.Designer.cs">
       <DependentUpon>list-task.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +128,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="list-task.resx">
       <DependentUpon>list-task.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
