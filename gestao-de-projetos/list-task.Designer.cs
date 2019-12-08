@@ -32,8 +32,8 @@
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Feitas", System.Windows.Forms.HorizontalAlignment.Left);
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.listView = new MaterialSkin.Controls.MaterialListView();
+            this.columnEstimate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTarefa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnEstimativa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnResponsavel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -41,9 +41,10 @@
             // 
             this.materialRaisedButton1.AutoSize = true;
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(361, 671);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(355, 671);
             this.materialRaisedButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
@@ -57,44 +58,46 @@
             // 
             this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnEstimate,
             this.columnTarefa,
-            this.columnEstimativa,
             this.columnResponsavel});
+            this.listView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listView.Depth = 0;
             this.listView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.listView.FullRowSelect = true;
             listViewGroup1.Header = "A fazer";
-            listViewGroup1.Name = "todoList";
+            listViewGroup1.Name = "groupTodo";
             listViewGroup2.Header = "Feitas";
-            listViewGroup2.Name = "doneList";
+            listViewGroup2.Name = "groupDone";
             this.listView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2});
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(24, 80);
+            this.listView.Location = new System.Drawing.Point(25, 100);
             this.listView.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listView.MouseState = MaterialSkin.MouseState.OUT;
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(449, 350);
-            this.listView.TabIndex = 2;
+            this.listView.Size = new System.Drawing.Size(466, 549);
+            this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.Click += new System.EventHandler(this.clickItem);
+            // 
+            // columnEstimate
+            // 
+            this.columnEstimate.Text = "T.E.";
+            this.columnEstimate.Width = 56;
             // 
             // columnTarefa
             // 
-            this.columnTarefa.Text = "";
-            this.columnTarefa.Width = 150;
-            // 
-            // columnEstimativa
-            // 
-            this.columnEstimativa.Text = "Estimativa";
-            this.columnEstimativa.Width = 71;
+            this.columnTarefa.Text = "Tarefa";
+            this.columnTarefa.Width = 175;
             // 
             // columnResponsavel
             // 
-            this.columnResponsavel.Text = "Responsável";
+            this.columnResponsavel.Text = "Responsavel";
             this.columnResponsavel.Width = 114;
             // 
             // list_task
@@ -102,8 +105,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 740);
-            this.Controls.Add(this.materialRaisedButton1);
             this.Controls.Add(this.listView);
+            this.Controls.Add(this.materialRaisedButton1);
             this.Name = "list_task";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefas";
@@ -117,8 +120,8 @@
 
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialListView listView;
+        private System.Windows.Forms.ColumnHeader columnEstimate;
         private System.Windows.Forms.ColumnHeader columnTarefa;
-        private System.Windows.Forms.ColumnHeader columnEstimativa;
         private System.Windows.Forms.ColumnHeader columnResponsavel;
     }
 }
