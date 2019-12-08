@@ -40,6 +40,7 @@ namespace gestao_de_projetos
 
         private void preencheListagem()
         {
+            listView.Items.Clear();
             List = Task.List(this.IdProjeto);
 
             foreach (Task item in List)
@@ -47,7 +48,6 @@ namespace gestao_de_projetos
                 ListViewItem listItem = new ListViewItem(item.GetEstimate().ToString() + "h(s)");
                 listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNome()));
                 listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNomeUsuario()));
-                listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetId().ToString()));
 
                 // armazena o id para operações
                 listItem.Tag = item.GetId();
@@ -74,7 +74,7 @@ namespace gestao_de_projetos
                 string Status = FindTaskStatus(IdProjeto);
 
                 // Chama dialog com botões personalizados
-                actionDialog dialog = new actionDialog(IdProjeto, Status);
+                actionDialog dialog = new actionDialog(this, IdProjeto, Status);
                 dialog.Size = new Size(300, 150);
                 dialog.StartPosition = FormStartPosition.CenterScreen;
                 dialog.ShowDialog();
@@ -86,7 +86,8 @@ namespace gestao_de_projetos
 
         public void alteraStatusTarefa(int IdTarefa, string Status)
         {
-            Task.StatusTarefa(IdTarefa, "DONE");
+            Task.StatusTarefa(IdTarefa, Status);
+            preencheListagem();
         }
 
         public void removerTarefa(int IdTarefa)
@@ -114,9 +115,8 @@ namespace gestao_de_projetos
     public class actionDialog : Form
     {
 
-        public actionDialog(int IdProjeto, string Status)
+        public actionDialog(list_task listagem, int IdProjeto, string Status)
         {
-            list_task listagem = new list_task(IdProjeto);
             Label label = new Label();
             label.Text = "Oque você deseja fazer a seguir?";
             label.Font = new Font("Arial", 10, FontStyle.Regular);

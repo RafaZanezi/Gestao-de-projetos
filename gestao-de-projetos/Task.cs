@@ -62,7 +62,7 @@ namespace gestao_de_projetos
 
             string Query = "UPDATE tarefa " +
                                 "SET status = @status " +
-                             "WHERE cod_tarefa = @id ";
+                             "WHERE cod_tarefa = cast(@id as integer) ";
 
             ParamsList.Add(Connection.addQueryListItem("status", Status));
             ParamsList.Add(Connection.addQueryListItem("id", Id.ToString()));
