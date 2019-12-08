@@ -70,7 +70,7 @@ namespace gestao_de_projetos
             List.Add(Connection.addQueryListItem("descricao", NewProject.GetDescricao()));
             List.Add(Connection.addQueryListItem("nome_orientador", NewProject.GetNomeOrientador()));
 
-            try { Connection.InsertUpdateData(Query, List); } catch(NpgsqlException e ) { throw e; }
+            try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }
         }
 
         // Update
@@ -120,22 +120,36 @@ namespace gestao_de_projetos
             try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }
         }
 
-        // List
+        //ListProj
         public Project(
             int Id,
-            String Nome,
-            String NomeOrientador,
-            String DtFim)
+            string Nome,
+            string NomeOrientador,
+            string TpVisibilidade)
         {
             this.Id = Id;
             this.Nome = Nome;
             this.NomeOrientador = NomeOrientador;
-            this.DtFim = DtFim;
+            this.TpVisibilidade = TpVisibilidade;
         }
 
-        public List<Project> List()
+        public static List<Project> SelectListProj()
         {
-            return new List<Project>();
+            List<Project> SelectListProj = new List<Project>();
+            List<QueryParameters> ParamProject = new List<QueryParameters>();
+
+
+            string Query = "SELECT pr.id_projeto , " +
+                                       "pr.nome," +
+                                       "pr.nome_orientador," +
+                                       "pr.tp_visibilidade " +
+                                       "FROM projeto pr ";
+
+            try
+            {
+                return Connection.List<Project>(Query, ParamProject);
+            }
+            catch (NpgsqlException e) { throw e; }
         }
 
         public static Project GetByPk(int id)
@@ -153,6 +167,24 @@ namespace gestao_de_projetos
             try { 
                 return Connection.GetByPk<Project>(Query, id); 
             } catch (NpgsqlException e) { throw e; }
+        }
+
+        // List
+        //public Project(
+           // int Id,
+            //String Nome,
+            //String NomeOrientador,
+            //String DtFim)
+        //{
+            //this.Id = Id;
+            //this.Nome = Nome;
+            //this.NomeOrientador = NomeOrientador;
+            //this.DtFim = DtFim;
+        //}
+
+        public List<Project> List()
+        {
+            return new List<Project>();
         }
 
         public static string configVisibilidade(Boolean isPublic)
