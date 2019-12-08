@@ -56,6 +56,27 @@ namespace gestao_de_projetos
             } catch (NpgsqlException e) { throw e; }
         }
 
+        public static void StatusTarefa(int Id, string Status)
+        {
+            List<QueryParameters> ParamsList = new List<QueryParameters>();
+
+            string Query = "UPDATE tarefa " +
+                                "SET status = @status " +
+                             "WHERE cod_tarefa = @id ";
+
+            ParamsList.Add(Connection.addQueryListItem("status", Status));
+            ParamsList.Add(Connection.addQueryListItem("id", Id.ToString()));
+
+            try { Connection.InsertUpdateData(Query, ParamsList); } catch (NpgsqlException e) { throw e; }
+        }
+
+        public static void Delete(int Id)
+        {
+            string Query = "DELETE FROM tarefa WHERE cod_tarefa = " + Id;
+            try { Connection.Delete(Query); }
+            catch (NpgsqlException e) { throw e; }
+        }
+
         public int GetId() { return Id; }
         public void SetId(int Id) { this.Id = Id; }
 
