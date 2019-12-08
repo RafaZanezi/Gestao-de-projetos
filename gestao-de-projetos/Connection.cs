@@ -123,6 +123,30 @@ namespace gestao_de_projetos
             }
         }
 
+        public static void Delete(string Query)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    NpgsqlCommand cmd_select = new NpgsqlCommand();
+                    cmd_select.Connection = conn;
+                    cmd_select.CommandText = Query;
+
+                    int rowsAffected = cmd_select.ExecuteNonQuery();
+
+                    if (rowsAffected == -1)
+                    {
+                        throw new Exception("Não foi possível remover o registro");
+                    }
+                }
+                catch (NpgsqlException e) { throw e; }
+                finally { conn.Close(); }
+            }
+        }
+
         private static Project configProject(NpgsqlDataReader reader)
         {
             reader.Read();
