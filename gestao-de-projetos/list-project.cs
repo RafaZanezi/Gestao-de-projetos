@@ -29,6 +29,8 @@ namespace gestao_de_projetos
             design.configMaterialSkin(this);
         }
 
+
+
         private void list_project_Load(object sender, EventArgs e)
         {
             preencheListagem();
@@ -51,6 +53,48 @@ namespace gestao_de_projetos
                 listViewProj.Items.Add(listItem);
             }
 
+        }
+
+        private void clickItemProj(object sender, EventArgs e)
+        {
+            try
+            {
+                ListViewItem selectItem = listViewProj.SelectedItems[0];
+                int IdProjeto = (int)selectItem.Tag;
+
+                // Chama dialog com botões personalizados
+                actionDialogProj dialog = new actionDialogProj(this, IdProjeto);
+                dialog.Size = new Size(300, 150);
+                dialog.StartPosition = FormStartPosition.CenterScreen;
+                dialog.ShowDialog();
+            }
+            catch (InvalidCastException c)
+            {
+                MessageBox.Show(c.Message, "Regitro Indisponível");
+            }
+
+        }
+
+        public class actionDialogProj : Form
+        {
+            list_project list = new list_project();
+
+            public actionDialogProj(list_project listagem, int IdProjeto)
+            {
+                Label label = new Label();
+                label.Text = "Mais opções";
+                label.Font = new Font("Arial", 10, FontStyle.Regular);
+                label.Size = new Size(230, 25);
+                label.Location = new Point(35, 20);
+                this.Controls.Add(label);
+
+                MaterialFlatButton edit = new MaterialFlatButton();
+                edit.Text = "Editar";
+                // adiciona ação ao clique do button
+                edit.Click += delegate (object sender, EventArgs args) { this.Close(); /*Adicionar redirecionamento*/};
+                edit.Location = new Point(100, 50);
+                this.Controls.Add(edit);
+            }
         }
     }
 }
