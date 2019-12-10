@@ -90,7 +90,7 @@ namespace gestao_de_projetos
             if (result == DialogResult.OK)
             {
                 Project.DeleteProject(IdProjeto);
-                listViewProj.Items.Clear();
+                preencheListagem();
             }
 
         }
