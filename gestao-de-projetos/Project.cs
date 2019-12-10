@@ -152,6 +152,13 @@ namespace gestao_de_projetos
             catch (NpgsqlException e) { throw e; }
         }
 
+        public static void DeleteProject(int Id)
+        {
+            string Query = "DELETE FROM projeto WHERE id_projeto = " + Id;
+            try { Connection.Delete(Query); }
+            catch (NpgsqlException e) { throw e; }
+        }
+
         public static Project GetByPk(int id)
         {
             String Query = "SELECT id_projeto," +
@@ -169,18 +176,18 @@ namespace gestao_de_projetos
             } catch (NpgsqlException e) { throw e; }
         }
 
-        // List
-        //public Project(
-           // int Id,
-            //String Nome,
-            //String NomeOrientador,
-            //String DtFim)
-        //{
-            //this.Id = Id;
-            //this.Nome = Nome;
-            //this.NomeOrientador = NomeOrientador;
-            //this.DtFim = DtFim;
-        //}
+         //List
+        public Project(
+            int Id,
+            String Nome,
+            String NomeOrientador,
+            String DtFim)
+        {
+            this.Id = Id;
+            this.Nome = Nome;
+            this.NomeOrientador = NomeOrientador;
+            this.DtFim = DtFim;
+        }
 
         public List<Project> List()
         {
