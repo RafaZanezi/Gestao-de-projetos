@@ -11,7 +11,7 @@ namespace gestao_de_projetos
 {
     class Connection
     {
-        private static string connString = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
+        private static string connString = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
 
         public static QueryParameters addQueryListItem(string Nome, string Valor)
         {
@@ -23,6 +23,8 @@ namespace gestao_de_projetos
         
         public static List<T> List<T>(String Query, List<QueryParameters> QueryParams)
         {
+            //é uma list genérica essa T da pra usar com tudo
+
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
@@ -40,6 +42,8 @@ namespace gestao_de_projetos
                             // Retornara um objecto de acordo com o tipo especificado em T
                             List<T> genericList = new List<T>();
 
+                            //Como ele tambem faz uma list do tipo T ele compara a Task com
+                            //a T(Que é a do método) elas tem que ser iguais
                             if (typeof(Task) == typeof(T))
                             {
                                 while(reader.Read())
@@ -56,9 +60,26 @@ namespace gestao_de_projetos
                                     T returnTask = (T)obj;
                                     genericList.Add(returnTask);
                                 }
+                            }else if(typeof(Project) == typeof(T))
+                            {
+                                while (reader.Read())
+                                {
+                                    Project ProjetoList = new Project();
+
+                                    if (!reader.IsDBNull(0)) { ProjetoList.SetId(reader.GetInt32(0)); }
+                                    if (!reader.IsDBNull(1)) { ProjetoList.SetNome(reader.GetString(1)); }
+                                    if (!reader.IsDBNull(2)) { ProjetoList.SetNomeOrientador(reader.GetString(2)); }
+                                    if (!reader.IsDBNull(3)) { ProjetoList.SetTpVisibilidade(reader.GetString(3)); }
+
+                                    Object obj = ProjetoList;
+                                    T returnProject = (T)obj;
+                                    genericList.Add(returnProject);
+                                }
+
                             }
 
                             return genericList;
+
                         }
                     }
                 }
