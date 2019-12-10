@@ -11,7 +11,7 @@ namespace gestao_de_projetos
 {
     class Connection
     {
-        private static string connString = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
+        private static string connString = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
 
         public static QueryParameters addQueryListItem(string Nome, string Valor)
         {

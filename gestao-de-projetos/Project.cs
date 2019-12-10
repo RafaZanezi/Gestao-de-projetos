@@ -176,24 +176,6 @@ namespace gestao_de_projetos
             } catch (NpgsqlException e) { throw e; }
         }
 
-         //List
-        public Project(
-            int Id,
-            String Nome,
-            String NomeOrientador,
-            String DtFim)
-        {
-            this.Id = Id;
-            this.Nome = Nome;
-            this.NomeOrientador = NomeOrientador;
-            this.DtFim = DtFim;
-        }
-
-        public List<Project> List()
-        {
-            return new List<Project>();
-        }
-
         public static string configVisibilidade(Boolean isPublic)
         {
             if (isPublic == false) { return "PV"; }  else { return "PB"; }

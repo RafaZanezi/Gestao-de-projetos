@@ -45,7 +45,8 @@
             this.lineUsuario.Depth = 0;
             this.lineUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineUsuario.Hint = "Usuário";
-            this.lineUsuario.Location = new System.Drawing.Point(87, 172);
+            this.lineUsuario.Location = new System.Drawing.Point(116, 212);
+            this.lineUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lineUsuario.MaxLength = 32767;
             this.lineUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.lineUsuario.Name = "lineUsuario";
@@ -53,7 +54,7 @@
             this.lineUsuario.SelectedText = "";
             this.lineUsuario.SelectionLength = 0;
             this.lineUsuario.SelectionStart = 0;
-            this.lineUsuario.Size = new System.Drawing.Size(193, 23);
+            this.lineUsuario.Size = new System.Drawing.Size(257, 28);
             this.lineUsuario.TabIndex = 17;
             this.lineUsuario.TabStop = false;
             this.lineUsuario.UseSystemPasswordChar = false;
@@ -67,7 +68,8 @@
             this.lineSenha.Depth = 0;
             this.lineSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineSenha.Hint = "Senha";
-            this.lineSenha.Location = new System.Drawing.Point(87, 227);
+            this.lineSenha.Location = new System.Drawing.Point(116, 279);
+            this.lineSenha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lineSenha.MaxLength = 32767;
             this.lineSenha.MouseState = MaterialSkin.MouseState.HOVER;
             this.lineSenha.Name = "lineSenha";
@@ -75,7 +77,7 @@
             this.lineSenha.SelectedText = "";
             this.lineSenha.SelectionLength = 0;
             this.lineSenha.SelectionStart = 0;
-            this.lineSenha.Size = new System.Drawing.Size(193, 23);
+            this.lineSenha.Size = new System.Drawing.Size(257, 28);
             this.lineSenha.TabIndex = 18;
             this.lineSenha.TabStop = false;
             this.lineSenha.UseSystemPasswordChar = false;
@@ -86,11 +88,12 @@
             this.btnLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLogin.Depth = 0;
             this.btnLogin.Icon = null;
-            this.btnLogin.Location = new System.Drawing.Point(149, 283);
+            this.btnLogin.Location = new System.Drawing.Point(199, 348);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Primary = true;
-            this.btnLogin.Size = new System.Drawing.Size(61, 36);
+            this.btnLogin.Size = new System.Drawing.Size(72, 36);
             this.btnLogin.TabIndex = 19;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -103,10 +106,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(54, 347);
+            this.materialDivider1.Location = new System.Drawing.Point(72, 427);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(260, 2);
+            this.materialDivider1.Size = new System.Drawing.Size(347, 2);
             this.materialDivider1.TabIndex = 22;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -116,12 +120,12 @@
             this.fbtnRegistro.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.fbtnRegistro.Depth = 0;
             this.fbtnRegistro.Icon = null;
-            this.fbtnRegistro.Location = new System.Drawing.Point(118, 421);
-            this.fbtnRegistro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.fbtnRegistro.Location = new System.Drawing.Point(157, 518);
+            this.fbtnRegistro.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.fbtnRegistro.MouseState = MaterialSkin.MouseState.HOVER;
             this.fbtnRegistro.Name = "fbtnRegistro";
             this.fbtnRegistro.Primary = false;
-            this.fbtnRegistro.Size = new System.Drawing.Size(114, 36);
+            this.fbtnRegistro.Size = new System.Drawing.Size(138, 36);
             this.fbtnRegistro.TabIndex = 23;
             this.fbtnRegistro.Text = "Registrar-se";
             this.fbtnRegistro.UseVisualStyleBackColor = true;
@@ -132,28 +136,30 @@
             this.fbtnEsqueceuSenha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.fbtnEsqueceuSenha.Depth = 0;
             this.fbtnEsqueceuSenha.Icon = null;
-            this.fbtnEsqueceuSenha.Location = new System.Drawing.Point(98, 373);
-            this.fbtnEsqueceuSenha.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.fbtnEsqueceuSenha.Location = new System.Drawing.Point(131, 459);
+            this.fbtnEsqueceuSenha.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.fbtnEsqueceuSenha.MouseState = MaterialSkin.MouseState.HOVER;
             this.fbtnEsqueceuSenha.Name = "fbtnEsqueceuSenha";
             this.fbtnEsqueceuSenha.Primary = false;
-            this.fbtnEsqueceuSenha.Size = new System.Drawing.Size(156, 36);
+            this.fbtnEsqueceuSenha.Size = new System.Drawing.Size(191, 36);
             this.fbtnEsqueceuSenha.TabIndex = 24;
             this.fbtnEsqueceuSenha.Text = "Esqueceu a senha?";
             this.fbtnEsqueceuSenha.UseVisualStyleBackColor = true;
             // 
             // login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 601);
+            this.ClientSize = new System.Drawing.Size(503, 740);
             this.Controls.Add(this.fbtnEsqueceuSenha);
             this.Controls.Add(this.fbtnRegistro);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lineSenha);
             this.Controls.Add(this.lineUsuario);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
