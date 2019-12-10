@@ -115,6 +115,13 @@ namespace gestao_de_projetos
 
         }
 
+        private void addProjectButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new createEditForm();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 
     public class actionDialogProject : Form

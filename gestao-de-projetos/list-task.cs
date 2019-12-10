@@ -43,25 +43,34 @@ namespace gestao_de_projetos
             listView.Items.Clear();
             List = Task.List(this.IdProjeto);
 
-            foreach (Task item in List)
+            if (List.Count > 0)
             {
-                ListViewItem listItem = new ListViewItem(item.GetEstimate().ToString() + "h(s)");
-                listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNome()));
-                listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNomeUsuario()));
-
-                // armazena o id para operações
-                listItem.Tag = item.GetId();
-
-                if (item.GetStatus() == "DONE")
+                listView.Visible = true;
+                nenhumRegistroLabel.Visible = false;
+                foreach (Task item in List)
                 {
-                    listItem.Group = listView.Groups[1];
-                }
-                else
-                {
-                    listItem.Group = listView.Groups[0];
-                }
+                    ListViewItem listItem = new ListViewItem(item.GetEstimate().ToString() + "h(s)");
+                    listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNome()));
+                    listItem.SubItems.Add(new ListViewSubItem(listItem, item.GetNomeUsuario()));
 
-                listView.Items.Add(listItem);
+                    // armazena o id para operações
+                    listItem.Tag = item.GetId();
+
+                    if (item.GetStatus() == "DONE")
+                    {
+                        listItem.Group = listView.Groups[1];
+                    }
+                    else
+                    {
+                        listItem.Group = listView.Groups[0];
+                    }
+
+                    listView.Items.Add(listItem);
+                }
+            } else
+            {
+                nenhumRegistroLabel.Visible = true;
+                listView.Visible = false;
             }
         }
 
@@ -109,6 +118,14 @@ namespace gestao_de_projetos
             }
 
             return Status;
+        }
+
+        private void voltarBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new list_project();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 
