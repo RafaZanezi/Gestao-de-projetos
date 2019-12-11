@@ -90,9 +90,20 @@ namespace gestao_de_projetos
             if (result == DialogResult.OK)
             {
                 Project.DeleteProject(IdProjeto);
-                listViewProj.Items.Clear();
+                preencheListagem();
             }
 
+        }
+
+        public void retornaMetrica(int IdProjeto)
+        {
+            ListViewItem selectItem = listViewProj.SelectedItems[0];
+            IdProjeto = (int)selectItem.Tag;
+
+            this.Hide();
+            Form f = new metrics(IdProjeto);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
 
         private void clickItemProj(object sender, EventArgs e)
@@ -104,7 +115,7 @@ namespace gestao_de_projetos
 
                 // Chama dialog com botões personalizados
                 actionDialogProject dialog = new actionDialogProject(this, IdProjeto);
-                dialog.Size = new Size(300, 150);
+                dialog.Size = new Size(400, 150);
                 dialog.StartPosition = FormStartPosition.CenterScreen;
                 dialog.ShowDialog();
             }
@@ -115,6 +126,13 @@ namespace gestao_de_projetos
 
         }
 
+        private void addProjectButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new createEditForm();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 
     public class actionDialogProject : Form
@@ -126,8 +144,15 @@ namespace gestao_de_projetos
             label.Text = "Oque você deseja fazer a seguir?";
             label.Font = new Font("Arial", 10, FontStyle.Regular);
             label.Size = new Size(230, 25);
-            label.Location = new Point(35, 20);
+            label.Location = new Point(75, 20);
             this.Controls.Add(label);
+
+            MaterialRaisedButton metrics = new MaterialRaisedButton();
+            metrics.Text = "Métrica";
+            // adiciona ação ao clique do button
+            metrics.Click += delegate (object sender, EventArgs args) { this.Close(); listProject.retornaMetrica(IdProjeto); };
+            metrics.Location = new Point(280, 50);
+            this.Controls.Add(metrics);
 
             MaterialFlatButton edit = new MaterialFlatButton();
             edit.Text = "Editar";

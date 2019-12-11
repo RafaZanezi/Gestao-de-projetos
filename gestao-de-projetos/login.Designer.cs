@@ -71,7 +71,7 @@
             this.lineSenha.MaxLength = 32767;
             this.lineSenha.MouseState = MaterialSkin.MouseState.HOVER;
             this.lineSenha.Name = "lineSenha";
-            this.lineSenha.PasswordChar = '\0';
+            this.lineSenha.PasswordChar = '*';
             this.lineSenha.SelectedText = "";
             this.lineSenha.SelectionLength = 0;
             this.lineSenha.SelectionStart = 0;
@@ -154,6 +154,7 @@
             this.Controls.Add(this.lineSenha);
             this.Controls.Add(this.lineUsuario);
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

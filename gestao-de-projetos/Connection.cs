@@ -11,7 +11,7 @@ namespace gestao_de_projetos
 {
     class Connection
     {
-        private static string connString = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
+        private static string connString = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
 
         public static QueryParameters addQueryListItem(string Nome, string Valor)
         {
@@ -70,6 +70,8 @@ namespace gestao_de_projetos
                                     if (!reader.IsDBNull(1)) { ProjetoList.SetNome(reader.GetString(1)); }
                                     if (!reader.IsDBNull(2)) { ProjetoList.SetNomeOrientador(reader.GetString(2)); }
                                     if (!reader.IsDBNull(3)) { ProjetoList.SetTpVisibilidade(reader.GetString(3)); }
+                                    if (!reader.IsDBNull(4)) { ProjetoList.SetDtInicio(reader.GetDateTime(4).ToString()); }
+                                    if (!reader.IsDBNull(5)) { ProjetoList.SetDtFim(reader.GetDateTime(5).ToString()); }
 
                                     Object obj = ProjetoList;
                                     T returnProject = (T)obj;

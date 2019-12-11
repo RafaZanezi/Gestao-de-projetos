@@ -17,7 +17,7 @@ namespace gestao_de_projetos
 {
     public partial class login : MaterialForm
     {
-        private string strConexao = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
+        private string strConexao = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
 
         public login()
         {
@@ -33,7 +33,7 @@ namespace gestao_de_projetos
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string autorizacao = "select * from usuario where nome = @nome and senha = @senha";
+            string autorizacao = "select count(1) from usuario where nome = @nome and senha = @senha";
 
             using (NpgsqlConnection conexao = new NpgsqlConnection(strConexao))
             {
@@ -46,16 +46,17 @@ namespace gestao_de_projetos
                         comando.Parameters.AddWithValue("@nome", lineUsuario.Text);
                         comando.Parameters.AddWithValue("@senha", lineSenha.Text);
 
-                        using (NpgsqlDataReader leitura = comando.ExecuteReader())
+                        string userFound = comando.ExecuteScalar().ToString();
+
+                        if (int.Parse(userFound) >= 1)
                         {
-                            if (leitura.Read() == true)
-                            {
-                                MessageBox.Show("Usuario e senha encontrados");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Acesso negado");
-                            }
+                            this.Hide();
+                            Form f = new list_project();
+                            f.Closed += (s, args) => this.Close();
+                            f.Show();
+                        } else
+                        {
+                            MessageBox.Show("Acesso negado");
                         }
                     }
                 }
@@ -67,11 +68,6 @@ namespace gestao_de_projetos
                 {
                     conexao.Close();
                 }
-
-                this.Hide();
-                Form f = new createEditForm();
-                f.Closed += (s, args) => this.Close();
-                f.Show();
             }
 
         }

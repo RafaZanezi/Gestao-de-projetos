@@ -16,7 +16,7 @@ namespace gestao_de_projetos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new list_task(3));
+            Application.Run(new login());
         }
 
 
