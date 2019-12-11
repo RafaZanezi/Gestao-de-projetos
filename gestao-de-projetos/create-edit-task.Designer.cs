@@ -31,6 +31,7 @@
             this.Nome_tarefa = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.Tempo_tarefa = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btn_criar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.Cancelar = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // Nome_tarefa
@@ -73,7 +74,7 @@
             this.btn_criar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_criar.Depth = 0;
             this.btn_criar.Icon = null;
-            this.btn_criar.Location = new System.Drawing.Point(113, 338);
+            this.btn_criar.Location = new System.Drawing.Point(167, 348);
             this.btn_criar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_criar.Name = "btn_criar";
             this.btn_criar.Primary = true;
@@ -83,16 +84,35 @@
             this.btn_criar.UseVisualStyleBackColor = true;
             this.btn_criar.Click += new System.EventHandler(this.btn_criar_Click);
             // 
+            // Cancelar
+            // 
+            this.Cancelar.AutoSize = true;
+            this.Cancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Cancelar.Depth = 0;
+            this.Cancelar.Icon = null;
+            this.Cancelar.Location = new System.Drawing.Point(64, 348);
+            this.Cancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.Cancelar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Primary = false;
+            this.Cancelar.Size = new System.Drawing.Size(91, 36);
+            this.Cancelar.TabIndex = 3;
+            this.Cancelar.Text = "Cancelar";
+            this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
+            // 
             // task_create_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 450);
+            this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.btn_criar);
             this.Controls.Add(this.Tempo_tarefa);
             this.Controls.Add(this.Nome_tarefa);
             this.Name = "task_create_edit";
             this.Text = "Criar Tarefa";
+            this.Load += new System.EventHandler(this.task_create_edit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +123,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField Nome_tarefa;
         private MaterialSkin.Controls.MaterialSingleLineTextField Tempo_tarefa;
         private MaterialSkin.Controls.MaterialRaisedButton btn_criar;
+        private MaterialSkin.Controls.MaterialFlatButton Cancelar;
     }
 }

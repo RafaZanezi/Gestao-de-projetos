@@ -20,10 +20,62 @@ namespace gestao_de_projetos
         private string NomeUsuario;
 
         public Task() { }
-        
+
+
+        // Insert
+        public Task(
+            String Nome,
+            Double Estimate)
+        {
+            this.Nome = Nome;
+            this.Estimate = Estimate;
+        }
+
+        public static void Insert(Task NewTask)
+        {
+            List<QueryParameters> List = new List<QueryParameters>();
+
+            String Query = "INSERT INTO Tarefa(" +
+                    "nome_tarefa, " +
+                    "tempo_estimado, " +
+                ")";
+
+            List.Add(Connection.addQueryListItem("nome_tarefa", NewTask.GetNome()));
+            List.Add(Connection.addQueryListItem("tempo_estimado", NewTask.GetEstimate().ToString()));
+           
+            try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }
+        }
+        // Update
+        public Task(
+            int Id,
+           String Nome,
+           Double Estimate)
+        {
+            this.Id = Id;
+            this.Nome = Nome;
+            this.Estimate = Estimate;
+        }
+
+        public static void Update(Task NewTask)
+        {
+            List<QueryParameters> List = new List<QueryParameters>();
+
+            String Query = "UPDATE Tarefa SET " +
+                    "nome_tarefa=@nome_tarefa," +
+                    "WHERE Cod_tarefa = cast(@Cod_tarefa as integer) " +
+                ")";
+
+            List.Add(Connection.addQueryListItem("nome_tarefa", NewTask.GetNome()));
+            List.Add(Connection.addQueryListItem("tempo_estimado", NewTask.GetEstimate().ToString()));
+
+            try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }
+        }
+
+
+
         // List 
         public Task(
-            int Id, 
+            int Id,
             string Nome,
             double Estimate,
             string NomeUsuario)
@@ -36,6 +88,8 @@ namespace gestao_de_projetos
 
         public static List<Task> List(int IdProjeto)
         {
+
+
             List <Task> List = new List<Task>();
             List<QueryParameters> ParamsList = new List<QueryParameters>();
 
@@ -74,6 +128,21 @@ namespace gestao_de_projetos
         {
             string Query = "DELETE FROM tarefa WHERE cod_tarefa = " + Id;
             try { Connection.Delete(Query); }
+            catch (NpgsqlException e) { throw e; }
+        }
+
+        public static Task GetByPk(int id)
+        {
+            String Query = "SELECT cod_tarefa," +
+                                 " nome_tarefa," +
+                                 " tempo_estimado," +
+                                
+                           "FROM Task WHERE cod_tarefa = @id";
+
+            try
+            {
+                return Connection.GetByPk<Task>(Query, id);
+            }
             catch (NpgsqlException e) { throw e; }
         }
 

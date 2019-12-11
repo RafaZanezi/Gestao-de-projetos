@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
-
+using Npgsql;
 
 namespace gestao_de_projetos
 {
@@ -29,26 +29,81 @@ namespace gestao_de_projetos
 
         private void btn_criar_Click(object sender, EventArgs e)
         {
-            if (Nome_tarefa.Text == null || Tempo_tarefa.Text == null)
+            try
             {
-                MessageBox.Show("Campos obrigatórios não foram preenchidos", "Erro no formulário", MessageBoxButtons.OK);
+                if (Nome_tarefa.Text == null || Tempo_tarefa.Text == null)
+                {
+                    MessageBox.Show("Campos obrigatórios não foram preenchidos", "Erro no formulário", MessageBoxButtons.OK);
+                }
+
+
+                Task Mytask = new Task(id,Nome_tarefa.Text, Convert.ToDouble(Tempo_tarefa.Text));
+                
+                if (this.id == 0)
+                {
+                    Task.Insert(Mytask);
+
+                }
+                else
+                {
+                    Mytask.SetId(this.id);
+                    Task.Update(Mytask);
+
+                }
+
+                this.concluir();
+                
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Tempo invalido", "Erro no formulário", MessageBoxButtons.OK);
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ocorreu um erro", MessageBoxButtons.OK);
+                Console.WriteLine(ex.Message + ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ocorreu um erro", MessageBoxButtons.OK);
+                Console.WriteLine(ex.Message + ex.StackTrace);
             }
 
 
 
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            this.concluir();
+        }
 
 
 
-            id = pj.GetId();
+        private void setFields(Task tsk)
+        {
+            Nome_tarefa.Text = tsk.GetNome();
+            Tempo_tarefa.Text = tsk.GetEstimate().ToString();
+        }
 
 
 
-            tk.SetId(id);
-            tk.SetNome(Nome_tarefa.ToString());
-            tk.SetEstimate(Convert.ToDouble(Tempo_tarefa));
 
-            
-            
+
+
+        private void concluir()
+        {
+            this.Hide();
+            Form f = new list_task(id);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
+
+        private void task_create_edit_Load(object sender, EventArgs e)
+        {
+            this.setFields(Task.GetByPk(this.id));
         }
     }
 }
