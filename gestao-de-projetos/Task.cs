@@ -105,7 +105,7 @@ namespace gestao_de_projetos
 
             ParamsList.Add(Connection.addQueryListItem("id_projeto", IdProjeto.ToString()));
 
-            try {
+           try {
                 return Connection.List<Task>(Query, ParamsList);
             } catch (NpgsqlException e) { throw e; }
         }

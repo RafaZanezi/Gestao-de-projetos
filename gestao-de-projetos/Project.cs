@@ -142,7 +142,9 @@ namespace gestao_de_projetos
             string Query = "SELECT pr.id_projeto , " +
                                        "pr.nome," +
                                        "pr.nome_orientador," +
-                                       "pr.tp_visibilidade " +
+                                       "pr.tp_visibilidade," +
+                                       "pr.dt_fim," +
+                                       "pr.dt_inicio " +
                                        "FROM projeto pr ";
 
             try
@@ -171,32 +173,16 @@ namespace gestao_de_projetos
                                  " ds_link_repositorio " +
                            "FROM Projeto WHERE id_projeto = @id";
 
-            try { 
-                return Connection.GetByPk<Project>(Query, id); 
-            } catch (NpgsqlException e) { throw e; }
-        }
-
-         //List
-        public Project(
-            int Id,
-            String Nome,
-            String NomeOrientador,
-            String DtFim)
-        {
-            this.Id = Id;
-            this.Nome = Nome;
-            this.NomeOrientador = NomeOrientador;
-            this.DtFim = DtFim;
-        }
-
-        public List<Project> List()
-        {
-            return new List<Project>();
+            try
+            {
+                return Connection.GetByPk<Project>(Query, id);
+            }
+            catch (NpgsqlException e) { throw e; }
         }
 
         public static string configVisibilidade(Boolean isPublic)
         {
-            if (isPublic == false) { return "PV"; }  else { return "PB"; }
+            if (isPublic == false) { return "PV"; } else { return "PB"; }
         }
 
         public int GetId() { return Id; }
@@ -225,3 +211,5 @@ namespace gestao_de_projetos
 
     }
 }
+
+
