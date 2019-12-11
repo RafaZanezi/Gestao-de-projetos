@@ -142,7 +142,9 @@ namespace gestao_de_projetos
             string Query = "SELECT pr.id_projeto , " +
                                        "pr.nome," +
                                        "pr.nome_orientador," +
-                                       "pr.tp_visibilidade " +
+                                       "pr.tp_visibilidade," +
+                                       "pr.dt_fim," +
+                                       "pr.dt_inicio " +
                                        "FROM projeto pr ";
 
             try
