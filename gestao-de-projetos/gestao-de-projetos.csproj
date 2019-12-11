@@ -129,6 +129,9 @@
     <EmbeddedResource Include="create-edit-project.resx">
       <DependentUpon>create-edit-project.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="create-edit-task.resx">
+      <DependentUpon>create-edit-task.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="list-project.resx">
       <DependentUpon>list-project.cs</DependentUpon>
     </EmbeddedResource>
