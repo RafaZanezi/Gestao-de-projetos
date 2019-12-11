@@ -173,17 +173,11 @@ namespace gestao_de_projetos
                                  " ds_link_repositorio " +
                            "FROM Projeto WHERE id_projeto = @id";
 
-<<<<<<< HEAD
-            try
-            {
-                return Connection.GetByPk<Project>(Query, id);
-            }
-            catch (NpgsqlException e) { throw e; }
-=======
+
             try { 
                 return Connection.GetByPk<Project>(Query, id); 
             } catch (NpgsqlException e) { throw e; }
->>>>>>> 3772a4ca23f727d010e259d7f8f0dc407cf2f58a
+
         }
 
         public static string configVisibilidade(Boolean isPublic)

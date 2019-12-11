@@ -17,7 +17,7 @@ namespace gestao_de_projetos
 {
     public partial class login : MaterialForm
     {
-        private string strConexao = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
+        private string strConexao = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=gestao_projdb";
 
         public login()
         {
@@ -70,6 +70,20 @@ namespace gestao_de_projetos
                 }
             }
 
+        }
+
+        private void fbtnRegistro_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new Registration();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+
+        }
+
+        private void fbtnEsqueceuSenha_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -125,6 +125,7 @@
             this.fbtnRegistro.TabIndex = 23;
             this.fbtnRegistro.Text = "Registrar-se";
             this.fbtnRegistro.UseVisualStyleBackColor = true;
+            this.fbtnRegistro.Click += new System.EventHandler(this.fbtnRegistro_Click);
             // 
             // fbtnEsqueceuSenha
             // 
@@ -141,6 +142,7 @@
             this.fbtnEsqueceuSenha.TabIndex = 24;
             this.fbtnEsqueceuSenha.Text = "Esqueceu a senha?";
             this.fbtnEsqueceuSenha.UseVisualStyleBackColor = true;
+            this.fbtnEsqueceuSenha.Click += new System.EventHandler(this.fbtnEsqueceuSenha_Click);
             // 
             // login
             // 

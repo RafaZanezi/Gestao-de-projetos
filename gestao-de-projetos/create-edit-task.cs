@@ -15,11 +15,10 @@ namespace gestao_de_projetos
 {
     public partial class task_create_edit : MaterialForm
     {
-        private string strConexao = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
-
         
 
-        int id = 0;
+         int id = 0;
+
         public task_create_edit()
         {
             InitializeComponent();
