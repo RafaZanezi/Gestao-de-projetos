@@ -35,6 +35,8 @@
             this.columnEstimate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTarefa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnResponsavel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nenhumRegistroLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.voltarBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // materialRaisedButton1
@@ -100,11 +102,43 @@
             this.columnResponsavel.Text = "Responsavel";
             this.columnResponsavel.Width = 114;
             // 
+            // nenhumRegistroLabel
+            // 
+            this.nenhumRegistroLabel.Depth = 0;
+            this.nenhumRegistroLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.nenhumRegistroLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nenhumRegistroLabel.Location = new System.Drawing.Point(25, 100);
+            this.nenhumRegistroLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.nenhumRegistroLabel.Name = "nenhumRegistroLabel";
+            this.nenhumRegistroLabel.Size = new System.Drawing.Size(442, 43);
+            this.nenhumRegistroLabel.TabIndex = 2;
+            this.nenhumRegistroLabel.Text = "Nenhuma tarefa para este projeto";
+            this.nenhumRegistroLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // voltarBtn
+            // 
+            this.voltarBtn.AutoSize = true;
+            this.voltarBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.voltarBtn.Depth = 0;
+            this.voltarBtn.Icon = null;
+            this.voltarBtn.Location = new System.Drawing.Point(29, 671);
+            this.voltarBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.voltarBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.voltarBtn.Name = "voltarBtn";
+            this.voltarBtn.Primary = false;
+            this.voltarBtn.Size = new System.Drawing.Size(87, 36);
+            this.voltarBtn.TabIndex = 3;
+            this.voltarBtn.Text = "Voltar";
+            this.voltarBtn.UseVisualStyleBackColor = true;
+            this.voltarBtn.Click += new System.EventHandler(this.voltarBtn_Click);
+            // 
             // list_task
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 740);
+            this.Controls.Add(this.voltarBtn);
+            this.Controls.Add(this.nenhumRegistroLabel);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.materialRaisedButton1);
             this.Name = "list_task";
@@ -123,5 +157,7 @@
         private System.Windows.Forms.ColumnHeader columnEstimate;
         private System.Windows.Forms.ColumnHeader columnTarefa;
         private System.Windows.Forms.ColumnHeader columnResponsavel;
+        private MaterialSkin.Controls.MaterialLabel nenhumRegistroLabel;
+        private MaterialSkin.Controls.MaterialFlatButton voltarBtn;
     }
 }
