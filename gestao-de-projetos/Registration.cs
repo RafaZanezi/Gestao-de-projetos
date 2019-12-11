@@ -49,7 +49,12 @@ namespace gestao_de_projetos
             List.Add(Connection.addQueryListItem("senha", Resp_pergunta.Text));
 
 
-           /* try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException e) { throw e; }*/
+            try { Connection.InsertUpdateData(Query, List); } catch (NpgsqlException excp) { throw excp; }
+
+        }
+
+        private void Registration_Load(object sender, EventArgs e)
+        {
 
         }
     }
