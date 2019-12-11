@@ -17,8 +17,7 @@ namespace gestao_de_projetos
     {
         private string strConexao = @"Host=localhost;Username=postgres;Password=12345;Database=bd_gestorprojetos";
 
-        Project pj = new Project();
-        Task tk = new Task();
+        
 
         int id = 0;
         public task_create_edit()
