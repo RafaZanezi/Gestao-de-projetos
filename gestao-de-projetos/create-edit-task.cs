@@ -15,12 +15,20 @@ namespace gestao_de_projetos
 {
     public partial class task_create_edit : MaterialForm
     {
-        
-
+       
          int id = 0;
+        int idProjeto = 0;
 
         public task_create_edit()
         {
+            InitializeComponent();
+            design.configMaterialSkin(this);
+        }
+
+        public task_create_edit(int id, int idProjeto)
+        {
+            this.id = id;
+            this.idProjeto = idProjeto;
             InitializeComponent();
             design.configMaterialSkin(this);
         }
@@ -94,14 +102,17 @@ namespace gestao_de_projetos
         private void concluir()
         {
             this.Hide();
-            Form f = new list_task(id);
+            Form f = new list_task(idProjeto);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
 
         private void task_create_edit_Load(object sender, EventArgs e)
         {
+            if(id > 0)
+            {
             this.setFields(Task.GetByPk(this.id));
+            }
         }
     }
 }

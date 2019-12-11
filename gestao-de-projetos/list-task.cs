@@ -127,12 +127,28 @@ namespace gestao_de_projetos
             f.Closed += (s, args) => this.Close();
             f.Show();
         }
+
+        private void adicionar(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new task_create_edit(0, this.IdProjeto);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
+
+        public void editaRegistro(int id)
+        {
+            this.Hide();
+            Form f = new task_create_edit(id, this.IdProjeto);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 
     public class actionDialog : Form
     {
 
-        public actionDialog(list_task listagem, int IdProjeto, string Status)
+        public actionDialog(list_task listagem, int IdTarefa, string Status)
         {
             Label label = new Label();
             label.Text = "Oque você deseja fazer a seguir?";
@@ -146,7 +162,7 @@ namespace gestao_de_projetos
                 MaterialFlatButton complete = new MaterialFlatButton();
                 complete.Text = "Refazer";
                 // adiciona ação ao clique do button
-                complete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.alteraStatusTarefa(IdProjeto, "TODO"); };
+                complete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.alteraStatusTarefa(IdTarefa, "TODO"); };
                 complete.Location = new Point(85, 50);
                 this.Controls.Add(complete);
             } else
@@ -154,7 +170,7 @@ namespace gestao_de_projetos
                 MaterialFlatButton complete = new MaterialFlatButton();
                 complete.Text = "Completar";
                 // adiciona ação ao clique do button
-                complete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.alteraStatusTarefa(IdProjeto, "DONE"); };
+                complete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.alteraStatusTarefa(IdTarefa, "DONE"); };
                 complete.Location = new Point(85, 50);
                 this.Controls.Add(complete);
             }
@@ -162,14 +178,14 @@ namespace gestao_de_projetos
             MaterialFlatButton edit = new MaterialFlatButton();
             edit.Text = "Editar";
             // adiciona ação ao clique do button
-            edit.Click += delegate (object sender, EventArgs args) { this.Close(); /* Chamar tela de edição passando o id */ };
+            edit.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.editaRegistro(IdTarefa); };
             edit.Location = new Point(10, 50);
             this.Controls.Add(edit);
 
             MaterialRaisedButton delete = new MaterialRaisedButton();
             delete.Text = "Remover";
             // adiciona ação ao clique do button
-            delete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.removerTarefa(IdProjeto); };
+            delete.Click += delegate (object sender, EventArgs args) { this.Close(); listagem.removerTarefa(IdTarefa); };
             delete.Location = new Point(190, 50);
             this.Controls.Add(delete);
         }

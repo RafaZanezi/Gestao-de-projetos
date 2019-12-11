@@ -55,6 +55,7 @@
             this.materialRaisedButton1.TabIndex = 0;
             this.materialRaisedButton1.Text = "Adicionar";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.adicionar);
             // 
             // listView
             // 

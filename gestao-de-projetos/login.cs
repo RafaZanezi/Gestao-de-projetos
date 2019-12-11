@@ -17,7 +17,7 @@ namespace gestao_de_projetos
 {
     public partial class login : MaterialForm
     {
-        private string strConexao = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=gestao_projdb";
+        private string strConexao = @"Host=127.0.0.1;Username=postgres;Password=Senh@123;Database=Gestao_projDB";
 
         public login()
         {
